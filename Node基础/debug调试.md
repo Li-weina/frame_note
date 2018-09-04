@@ -61,7 +61,7 @@ node --inspect-brk filename
 
 打开chrome://inspect
 会出现如下内容<br>
-![图](/Users/lena/Desktop/1.png)
+![图](../images/chrome_inspect.png)
 
 点击inspect
 进入一个编辑窗口，如图：

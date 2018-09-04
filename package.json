@@ -1,0 +1,8 @@
+{
+  "name": "Framework-note",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Li-weina/frame_note.git",
+  "author": "Li-weina <weinal@opera.com>",
+  "license": "MIT"
+}
