@@ -34,3 +34,63 @@ let assert = require('assert')
 // assert(1===2,'e')
 console.log('c')
 
+let a = {name:'le',fn:function(){
+    console.log('fn')
+}}
+let b = {age:8}
+let c = {...a,...b}
+let d = Object.assign(a,b)
+console.log(d)
+let a = {name:'le',fn:function(){
+    console.log('fn')
+}}
+let e = JSON.parse(JSON.stringify(a))
+console.log(e)
+
+
+function deepClone(obj){
+    if(typeof obj !== 'object') return obj;
+    if(obj instanceof RegExp) return new RegExp(obj)
+    if(obj instanceof Date) return new Date(obj)
+    let newObj =new obj.constructor()
+    for(let key in obj){
+        newObj[key] = deepClone(obj[key])
+    }
+    return newObj
+}
+
+let obj = {
+    name:'li',
+    ary:[1,2,3],
+    list:{
+        age:'3'
+    },
+    fn:function(){
+        console.log('fn')
+    }
+}
+let obje = JSON.parse(JSON.stringify(obj))
+obj.list.age= 8
+console.log(obje)
+
+let obj1 = {
+    number:0
+}
+
+function observe(obj){
+    for(let key in obj){
+        defineReactive(obj,key,obj[key])
+    }
+}
+function defineReactive(obj,property,value){
+    Object.defineProperty(obj,property,{
+        get(){
+            return value
+        },
+        set(newVal){
+            console.log('update')
+            value = newVal
+        }
+    })
+}
+observe(obj1)

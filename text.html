@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+let obj1 = {
+    number:0
+}
+
+function observe(obj){
+    if(typeof obj!=='object') return;
+    for(let key in obj){
+        defineReactive(obj,key,obj[key])
+        observe(obj[key])
+    }
+}
+function defineReactive(obj,property,value){
+    Object.defineProperty(obj,property,{
+        get(){
+            return value
+        },
+        set(newVal){
+            alert('update')
+            value = newVal
+        }
+    })
+}
+observe(obj1)
+
+//proxy
+
+
+// let proxy = new Proxy(obj2,{
+//     get(target,property){
+//         alert('get')
+//         return target[property]
+//     },
+//     set(target,property,newVal){
+//         alert('set')
+//         target[property] = newVal
+//     }
+// })
+let obj2 = [7,3,4]
+// {
+//     age:9,
+//     list:{name:9}
+// }
+function setVal(obj,cb){
+    console.log('en')
+    let proxy = new Proxy(obj,{
+    set(target,property,newVal){
+        alert('set')
+        target[property] = newVal
+    }
+    })
+
+    cb(proxy)
+}
+setVal(obj2,function(proxy){
+    proxy['0'] = 0
+})
+// console.log(proxy.age)
+</script>
+</body>
+</html>
