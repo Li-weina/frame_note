@@ -1,0 +1,12 @@
+set 数组去重，求交集、并集、差集
+常用方法 add entried has forEach size keys values
+可以转化成数组[...set]
+
+map 对象去重
+
+对象 方法Object.keys  values
+数组方法：
+es6：find findIndex
+es7：includes
+es5:reduce some every filter map forEach
+
